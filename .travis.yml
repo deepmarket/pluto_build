@@ -40,9 +40,9 @@ matrix:
       osx_image: xcode6.4
     
     # 10.11.latest
-    # - os: osx
-    #   language: generic
-    #   osx_image: xcode8
+    - os: osx
+      language: generic
+      osx_image: xcode8
     #
     # # 10.12.latest
     # - os: osx
