@@ -78,3 +78,16 @@ before_install:
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install ruby ruby-dev build-essential ; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then gem install --no-document fpm ; fi
 
+before_deploy:
+    # Set up git user name and tag this commit
+    - git config --local user.name "Sam Gomena"
+    - git config --local user.email "gomenas@pdx.edu"
+    - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+    - git tag $TRAVIS_TAG
+
+ deploy:
+    provider: releases
+    api_key: "$GITHUB_DEPLOY_KEY"
+    file: "target/Pluto.deb"
+    skip_cleanup: true
+
