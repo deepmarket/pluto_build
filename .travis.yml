@@ -76,5 +76,5 @@ before_install:
     
     # Install `fpm` on linux
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install ruby ruby-dev build-essential ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then gem install --no-ri --no-rdoc fpm ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then gem install --no-document fpm ; fi
 
