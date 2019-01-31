@@ -44,8 +44,7 @@ matrix:
       language: generic
       osx_image: xcode10
   
-  
-  allow_failures:
+  # allow_failures:
     # 10.10
     - os: osx
       language: generic
