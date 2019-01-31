@@ -1,4 +1,5 @@
 PyQt5==5.10
+PyInstaller==3.4
 sip==4.19.7
 requests>=2.20.0
 psutil==5.4.7
