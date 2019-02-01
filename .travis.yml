@@ -67,9 +67,10 @@ matrix:
 before_install:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update ; fi
     # Don't install pyenv twice
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]] && ! [[ -x "$(command -v pyenv)" ]]; then brew install pyenv ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install 3.6.5 ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then PATH="~/.pyenv/versions/3.6.5/bin:${PATH}" ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install python ; fi
+    # - if [[ "$TRAVIS_OS_NAME" == "osx" ]] && ! [[ -x "$(command -v pyenv)" ]]; then brew install pyenv ; fi
+    # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install 3.6.5 ; fi
+    # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then PATH="~/.pyenv/versions/3.6.5/bin:${PATH}" ; fi
     
     # Install `fpm` on linux
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install ruby ruby-dev build-essential ; fi
@@ -88,5 +89,5 @@ deploy:
     file: "target/Pluto.deb"
     skip_cleanup: true
     on:
-      tags: false
+      tags: true
 
