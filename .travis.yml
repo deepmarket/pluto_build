@@ -87,4 +87,6 @@ deploy:
     api_key: "$GITHUB_DEPLOY_KEY"
     file: "target/Pluto.deb"
     skip_cleanup: true
+    on:
+      tags: false
 
