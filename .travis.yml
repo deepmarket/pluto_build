@@ -35,7 +35,7 @@ matrix:
 #       sudo: true
 
     # Tests Python 3.6 and 3.7 on Ubuntu Xenial
-    - python: 3.6
+    - python: "3.6"
     # - python: 3.7
       dist: xenial
       sudo: true
@@ -84,7 +84,8 @@ before_install:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install 3.6.3 ; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then PATH="~/.pyenv/versions/3.6.3/bin:$PATH" ; fi
     # Have to add pyinstaller to path manually?
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then PATH="~/.pyenv/versions/3.6.3/bin/pyinstaller:$PATH" ; fi
+#    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then PATH="~/.pyenv/versions/3.6.3/bin/pyinstaller:$PATH" ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then PATH="~/.pyenv/versions/3.6.3/lib/python3.6/site-packages:$PATH" ; fi
     
     # Install `fpm` on linux
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install ruby ruby-dev build-essential ; fi
