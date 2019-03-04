@@ -86,6 +86,8 @@ before_install:
     # Have to add pyinstaller to path manually?
 #    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then PATH="~/.pyenv/versions/3.6.3/bin/pyinstaller:$PATH" ; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then PATH="~/.pyenv/versions/3.6.3/lib/python3.6/site-packages:$PATH" ; fi
+    # Just do it manually, then
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install PyInstaller==3.4" ; fi
     
     # Install `fpm` on linux
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install ruby ruby-dev build-essential ; fi
