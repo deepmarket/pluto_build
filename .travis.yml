@@ -12,6 +12,9 @@ script:
     - whereis pip
     - python --version
     - pip --version
+    - pip show pyinstaller
+    - which pyinstaller
+    - whereis pyinstaller
 
     - pip install pip==18.1
     - pip install -r requirements.txt
