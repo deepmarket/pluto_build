@@ -77,7 +77,9 @@ before_install:
 #    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew upgrade python ; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]] && ! [[ -x "$(command -v pyenv)" ]]; then brew install pyenv ; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install 3.6.3 ; fi
-#    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then PATH="~/.pyenv/versions/3.6.3/bin:$PATH" ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then PATH="~/.pyenv/versions/3.6.3/bin:$PATH" ; fi
+    # Have to add pyinstaller to path manually?
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then PATH="~/.pyenv/versions/3.6.3/bin/pyinstaller:$PATH" ; fi
     
     # Install `fpm` on linux
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install ruby ruby-dev build-essential ; fi
