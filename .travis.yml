@@ -30,7 +30,7 @@ matrix:
 
     # Tests Python 3.6 on Ubuntu Trusty
 #     - python: 3.6
-# #    - python: 3.7  # as of 8/17.18 3.7 is still being worked on by the travis team
+#     - python: 3.7  # as of 8/17.18 3.7 is still being worked on by the travis team
 #       dist: trusty
 #       sudo: true
 
@@ -43,37 +43,26 @@ matrix:
     # MacOs
     # See https://docs.travis-ci.com/user/reference/osx/#os-x-version for details
    
-    # 10.10
-    # - os: osx
-    #   language: generic
-    #   osx_image: xcode6.4
-    
-    # 10.11.latest
-    - os: osx
-      language: generic
-      osx_image: xcode8
-    #
-    # # 10.12.latest
-    - os: osx
-      language: generic
-      osx_image: xcode9.2
-    #
-    # # 10.13.latest
-    # - os: osx
-    #   language: generic
-    #   osx_image: xcode10
-    #
-  # # allow_failures:
-  #   # 10.10
-  #   - os: osx
-  #     language: generic
-  #     osx_image: xcode6.4
-  #
-  #   # 10.12.latest
-  #   - os: osx
-  #     language: generic
-  #     osx_image: xcode9.2
-  #
+#    # 10.10.latest As of 1/18/19 Travis no longer support this version outright
+#    - os: osx
+#      language: generic
+#      osx_image: xcode6.4
+#
+#    # 10.11.latest
+#    - os: osx
+#      language: generic
+#      osx_image: xcode8
+#
+#    # # 10.12.latest
+#    - os: osx
+#      language: generic
+#      osx_image: xcode9.2
+#
+#    # 10.13.latest
+#    - os: osx
+#      language: generic
+#      osx_image: xcode10
+
 
 # Perform manual install of 3.6 for OS X
 before_install:
