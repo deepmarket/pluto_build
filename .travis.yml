@@ -51,7 +51,7 @@ matrix:
     # 10.11.latest
     - os: osx
       language: generic
-      osx_image: xcode8.3
+      osx_image: xcode8
     #
     # # 10.12.latest
     - os: osx
@@ -78,16 +78,13 @@ matrix:
 # Perform manual install of 3.6 for OS X
 before_install:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update ; fi
-    # Don't install pyenv twice
+    # `brew upgrade` installs 3.7 which isn't supported so don't do that
 #    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew upgrade python ; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]] && ! [[ -x "$(command -v pyenv)" ]]; then brew install pyenv ; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install 3.6.3 ; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then PATH="~/.pyenv/versions/3.6.3/bin:$PATH" ; fi
     # Have to add pyinstaller to path manually?
-#    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then PATH="~/.pyenv/versions/3.6.3/bin/pyinstaller:$PATH" ; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then PATH="~/.pyenv/versions/3.6.3/lib/python3.6/site-packages:$PATH" ; fi
-    # Just do it manually, then
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then "python -m pip install PyInstaller==3.4" ; fi
     
     # Install `fpm` on linux
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install ruby ruby-dev build-essential ; fi
@@ -101,10 +98,18 @@ before_deploy:
     - git tag $TRAVIS_TAG
 
 deploy:
-    provider: releases
-    api_key: "$GITHUB_DEPLOY_KEY"
-    file: "target/Pluto.deb"
-    skip_cleanup: true
-    on:
-      tags: true
+    - provider: releases
+      api_key: "$GITHUB_DEPLOY_KEY"
+      file:
+        - "target/Pluto.deb"
+      skip_cleanup: true
+      on:
+        tags: true
 
+    - provider: releases
+      api_key: "$GITHUB_DEPLOY_KEY"
+      file:
+        - "target/Pluto.dmg"
+      skip_cleanup: true
+      on:
+        tags: true
